@@ -1,0 +1,2 @@
+model_checkpoint_path: "912223_NN_model.ckpt"
+all_model_checkpoint_paths: "912223_NN_model.ckpt"

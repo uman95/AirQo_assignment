@@ -42,7 +42,6 @@ Y_train = scaler_Y.fit_transform(Y_train)
 X_val = scaler_X.transform(X_val)
 Y_val = scaler_Y.transform(Y_val)
 
-print(type(X_train))
 
 batch_train = TimeseriesGenerator(data=X_train, targets=Y_train.reshape(
     -1, 1), length=24, sampling_rate=1, batch_size=opt.batch_size)
@@ -54,7 +53,6 @@ model = Model(input_dim=batch_train[0]
               [0].shape[1:], num_output=len(opt.target))
 
 path = '../models'
-
 if not os.path.exists(path):
     os.makedirs(path)
 checkpoint_path = path + f'/{opt.data_Id}_{opt.model}_model.ckpt'
