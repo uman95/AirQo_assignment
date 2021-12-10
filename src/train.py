@@ -1,4 +1,5 @@
 from pathlib import Path
+import pandas as pd
 import os
 import numpy
 import matplotlib.pyplot as plt
@@ -17,25 +18,31 @@ data = preprocess(opt.data_Id)
 
 
 def featureLabelSplit(df, target=opt.target) -> tuple:
+    """
+    This function splits a dataframe into feature variables and targets
+    input: dataframe containing 'target'
+    output: (feature, target) as a tuple
+    """
     Y = df[target].to_numpy()
     X = df.to_numpy()
     return (X, Y)
 
 
-def data_split(X, Y, test_ratio=0.3):
+def data_split(X, Y, test_ratio=0.3) -> tuple:
+    """
+    Takes X, Y inputs to split using test_ratio
+    """
     X_train, X_val, Y_train, Y_val = train_test_split(
         X, Y, test_size=test_ratio, shuffle=False)
     return X_train, Y_train, X_val, Y_val
 
 
 X, Y = featureLabelSplit(data)
-print(type(X))
 scaler_X = MinMaxScaler()
 scaler_Y = MinMaxScaler()
 
 X_train, Y_train, X_val, Y_val = data_split(X, Y)
 
-print(type(X_train))
 
 X_train = scaler_X.fit_transform(X_train)
 Y_train = scaler_Y.fit_transform(Y_train)

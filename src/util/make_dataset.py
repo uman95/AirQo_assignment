@@ -20,25 +20,25 @@ def load_data(dataPath, dataType: dict) -> pd.core.frame.DataFrame:
     return data
 
 
-def create_channel() -> dict:
+def create_channel(dataPath='data/airquality-dataset/sample_dataset.csv') -> dict:
 
     data = load_data(
-        dataPath='data/airquality-dataset/sample_dataset.csv', dataType=dataType)
+        dataPath=dataPath, dataType=dataType)
 
-    #channelSite = dict(zip(data['channel_id'].unique(), data['Site'].unique()))
+    channelSite = dict(zip(data['channel_id'].unique(), data['Site'].unique()))
     siteGroups = data.groupby('channel_id')
     for x in siteGroups.groups:
         if not os.path.exists('data_group'):
             os.makedirs('data_group')
         siteGroups.get_group(x).to_csv(f'data_group/{x}.csv')
 
-    # return channelSite
+    return channelSite
 
 
 def readChannel(channelId: int, dataPath='data/data_group') -> pd.core.frame.DataFrame:
 
     if not os.path.exists(dataPath):
-        create_channel()
+        _ = create_channel()
 
     path = dataPath + '/' + str(channelId) + '.csv'
     channelData = pd.read_csv(path, index_col=0, parse_dates=['TimeStamp'])

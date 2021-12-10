@@ -10,7 +10,8 @@ def plotting(history, model_name=opt.model, target=opt.target, num_epoch=opt.epo
     for key in history.keys():
         plt.plot(history[key], label=key)
         plt.legend()
-    plt.xticks(np.arange(num_epoch, step=2))
+    step = num_epoch / 5
+    plt.xticks(np.arange(num_epoch, step=step))
     plt.xlabel("epoch")
     plt.ylabel("mse")
     plt.title(f'loss for {model_name} model on {target} prediction')

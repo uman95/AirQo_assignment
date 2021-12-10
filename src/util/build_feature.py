@@ -5,6 +5,7 @@ from config import cfg
 
 
 def getFeatures(df: pd.core.frame.DataFrame) -> pd.core.frame.DataFrame:
+
     df = df.drop(labels='channel_id', axis=1).groupby(pd.Grouper(
         key='TimeStamp', freq='1H')).mean().fillna(method='ffill')
     df = df.assign(hour=df.index.hour,

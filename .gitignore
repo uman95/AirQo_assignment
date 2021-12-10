@@ -2,3 +2,6 @@ env/
 airquality-dataset/
 data_group/
 .ipynb_checkpoints
+dashboard.py
+AirQo.ipynb
+__init__.py
