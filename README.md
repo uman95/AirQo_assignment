@@ -6,6 +6,7 @@
 
 #### Note that the data folder have been ignored
 
+```
 ├── AirQo_analysis.ipynb
 ├── AirQo.ipynb
 ├── dashboard.py
@@ -38,3 +39,4 @@
 ├── build_feature.py
 ├── make_dataset.py
 ├── plot.py
+```
