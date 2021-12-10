@@ -22,6 +22,7 @@
 │   └── AirQo.ipynb
 ├── README.md
 ├── report
+│   └── AirQo_report.pdf
 ├── requirements.txt
 └── src
 ├── config.py
